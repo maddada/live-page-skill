@@ -29,7 +29,7 @@ Expect `pass 4` and `fail 0`.
 node skills\live-page\scripts\live-page.mjs selftest
 ```
 
-Expect 22 `PASS` lines and `All 22 checks passed (win32, node v...)`.
+Expect 23 `PASS` lines and `All 23 checks passed (win32, node v...)`.
 
 ```powershell
 npm run check

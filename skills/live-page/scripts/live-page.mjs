@@ -617,8 +617,9 @@ async function handle(req, res, key) {
   if (req.method === 'GET') {
     const target = path.resolve(meta.dir, ...rest);
     const inside = target.startsWith(path.resolve(meta.dir) + path.sep);
-    const base = path.basename(target);
-    if (inside && !base.startsWith('.') && TYPES[path.extname(target).toLowerCase()] && exists(target) && fs.statSync(target).isFile()) return send(res, 200, fs.readFileSync(target), TYPES[path.extname(target).toLowerCase()]);
+    // Never anything hidden (.git, .env, .secrets/...) or installed packages.
+    const hidden = rest.some((seg) => seg.startsWith('.') || seg === 'node_modules');
+    if (inside && !hidden && TYPES[path.extname(target).toLowerCase()] && exists(target) && fs.statSync(target).isFile()) return send(res, 200, fs.readFileSync(target), TYPES[path.extname(target).toLowerCase()]);
   }
   return send(res, 404, { ok: false, error: 'not found' });
 }
@@ -870,6 +871,14 @@ async function cmdSelftest() {
     h = await request(info, { method: 'POST', p: `${base}/image`, body: png, headers: { origin: `http://127.0.0.1:${info.port}` } });
     const img = JSON.parse(h.text);
     ok('a pasted image is saved', h.status === 200 && img.ok && exists(img.path));
+    fs.mkdirSync(path.join(tmp, 'pages', 'img'), { recursive: true });
+    fs.writeFileSync(path.join(tmp, 'pages', 'img', 'a.png'), png);
+    fs.mkdirSync(path.join(tmp, 'pages', '.secret'), { recursive: true });
+    fs.writeFileSync(path.join(tmp, 'pages', '.secret', 'key.json'), '{"k":1}');
+    h = await request(info, { p: `${base}/img/a.png` });
+    const hidden = await request(info, { p: `${base}/.secret/key.json` });
+    const outside = await request(info, { p: `${base}/..%2F..%2Fhome%2Fserver.json` });
+    ok('files next to the page are served, hidden ones and ones outside are not', h.status === 200 && hidden.status === 404 && outside.status === 404, `${h.status} ${hidden.status} ${outside.status}`);
     // The agent waits; the user sends; the agent gets exactly what was sent.
     const waiter = spawn(process.execPath, [SCRIPT, 'wait', shown.id, '--json'], { env, windowsHide: true });
     let out = '';
