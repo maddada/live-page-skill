@@ -95,11 +95,16 @@ How each agent gets the answers back:
 | Codex | `wait` in the turn (with a long timeout, repeated if it runs out) | yes, Send and Copy answers |
 | Cursor CLI | `wait` in the turn | yes, Send |
 | Pi | `wait` in the turn | yes, Send |
-| OpenCode | `wait` in the turn, repeated every 2 minutes (its shell timeout) | partly: one run got the exact answers; in others its skill tool did not load the skill (say "read .agents/skills/live-page/SKILL.md" if that happens) |
+| OpenCode | `wait` in the turn, repeated every 2 minutes (its shell timeout) | yes, Send and Copy answers |
 | Copilot CLI | `wait` in the turn | not yet |
 
 If the agent stopped waiting (or you answered a day later), say "I answered the page": it reads the
 saved answers with `live-page.mjs answers`. Or press **Copy answers** and paste.
+
+Starting `opencode run` from a script or another tool? Set `PWD` to the project folder as well as
+the working directory: OpenCode takes its project folder from `$PWD` first, and in a folder other
+than the one the skill is installed in it cannot load the skill ("Unable to load skill live-page").
+A shell does this for you.
 
 In a VS Code or Cursor terminal the script does not open a browser: the agent gives you the link to
 open in the editor's built-in browser (VS Code: Command Palette, "Simple Browser: Show").
