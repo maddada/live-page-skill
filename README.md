@@ -89,14 +89,14 @@ waits.
 
 How each agent gets the answers back:
 
-| Agent | Waits by | Tested |
+| Agent | Waits by | Tested on macOS |
 | --- | --- | --- |
-| Claude Code | `wait` as a background command; it is woken when you press Send | yes |
-| Codex | `wait` in the turn (with a long timeout, repeated if it runs out) | yes |
-| Cursor CLI | `wait` in the turn | see below |
-| OpenCode | `wait` in the turn, repeated every 2 minutes (its shell timeout) | see below |
+| Claude Code | `wait` as a background command; it is woken when you press Send | yes, Send and Copy answers |
+| Codex | `wait` in the turn (with a long timeout, repeated if it runs out) | yes, Send and Copy answers |
+| Cursor CLI | `wait` in the turn | yes, Send |
+| Pi | `wait` in the turn | yes, Send |
+| OpenCode | `wait` in the turn, repeated every 2 minutes (its shell timeout) | partly: one run got the exact answers; in others its skill tool did not load the skill (say "read .agents/skills/live-page/SKILL.md" if that happens) |
 | Copilot CLI | `wait` in the turn | not yet |
-| Pi | `wait` in the turn | see below |
 
 If the agent stopped waiting (or you answered a day later), say "I answered the page": it reads the
 saved answers with `live-page.mjs answers`. Or press **Copy answers** and paste.
