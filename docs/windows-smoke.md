@@ -37,7 +37,10 @@ node skills\live-page\scripts\live-page.mjs doctor
 ```
 
 Expect `ok: ... files checked`, then the doctor's table with `platform win32`, `page kit found` and
-`inside Ghostex no` (if it says yes, run this from a plain PowerShell window, not a Ghostex one).
+`inside Ghostex no`. It says yes when a Ghostex session variable is set, and also when the
+`ghostex` CLI recognises the terminal as a Ghostex session, so run these steps from a plain
+PowerShell window, not a Ghostex one. To test from inside Ghostex anyway, set
+`$env:LIVE_PAGE_IGNORE_GHOSTEX = "1"` first (and remove it before step 5's Ghostex check).
 
 ## 3. A real page in the browser, with a path that has spaces
 

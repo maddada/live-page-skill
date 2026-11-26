@@ -9,7 +9,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test",
     "check": "node scripts/check.mjs"
   },
   "repository": {

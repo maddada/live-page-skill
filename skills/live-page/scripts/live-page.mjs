@@ -361,6 +361,8 @@ function cmdShow(pos, flags) {
 }
 
 function quoteArg(s) {
+  // Windows paths keep their single backslashes: plain double quotes, as cmd and PowerShell expect.
+  if (IS_WIN) return /[\s"&|;<>()^%]/.test(s) ? `"${s.replace(/"/g, '')}"` : s;
   return /[\s"'$`\\()&|;<>]/.test(s) ? JSON.stringify(s) : s;
 }
 

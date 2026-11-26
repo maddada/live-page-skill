@@ -8,7 +8,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const problems = [];
-const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
+// Windows checkouts may turn LF into CRLF: read every file as LF so the checks see the same text.
+const read = (p) => fs.readFileSync(path.join(root, p), 'utf8').replace(/\r\n/g, '\n');
 const json = (p) => JSON.parse(read(p));
 
 const skill = read('skills/live-page/SKILL.md');
