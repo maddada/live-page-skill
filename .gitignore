@@ -1,0 +1,8 @@
+node_modules/
+.live-page/
+.live-pages/
+*.log
+.DS_Store
+# Smoke-test runs and their logs live outside the repo.
+smoke/
+*.standalone.html

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ghostex-page" content="v2">
+<title>Sign-up: which flow should I build?</title>
+<style>
+  /* Only the page's own drawing: the kit paints the page, the glass, the questions and Send. */
+  .how { margin: -2px 0 0; font-size: 13px; line-height: 1.45; color: var(--gx-muted); }
+  .how b { color: var(--gx-fg); font-weight: 600; }
+  /* Schematic screens, all on the same scale, so the flows compare at a glance. */
+  .steps { display: flex; gap: 8px; padding: 12px; border-radius: 12px; background: var(--gx-surface); border: 1px solid var(--gx-line); }
+  .screen { flex: 1; min-width: 0; display: grid; gap: 5px; align-content: start; padding: 8px; height: 92px; box-sizing: border-box;
+    border-radius: 8px; background: var(--gx-raised); border: 1px solid var(--gx-line); }
+  .screen i { display: block; height: 7px; border-radius: 99px; background: var(--gx-line-strong); }
+  .screen i.w6 { width: 60%; } .screen i.w4 { width: 40%; }
+  .screen b { display: block; height: 14px; margin-top: auto; border-radius: 5px; background: var(--gx-pick); opacity: .85; }
+  .screen small { font-size: 10px; color: var(--gx-muted); white-space: nowrap; }
+</style>
+</head>
+<body>
+<gx-questions submit="Send to the agent">
+  <header>
+    <span class="gx-eyebrow">Sign-up · plan review</span>
+    <h1>Sign-up: which flow should I build?</h1>
+    <p class="gx-lede">Three ways to get a new user from the landing page to their first project.</p>
+    <div class="gx-chips">
+      <span class="gx-chip"><b>41%</b> drop off today</span>
+      <span class="gx-chip"><b>3</b> flows</span>
+      <span class="gx-chip">email + GitHub</span>
+    </div>
+  </header>
+
+  <gx-wide>
+    <div class="gx-options">
+      <section data-question="flow" data-choice="one">
+        <span class="gx-ribbon">Recommended</span>
+        <h3>A. One screen</h3>
+        <p class="how">Email or GitHub, then <b>straight into a sample project</b>.</p>
+        <div class="steps">
+          <div class="screen"><small>Sign up</small><i></i><i class="w6"></i><b></b></div>
+        </div>
+        <div class="gx-stats">
+          <div class="gx-stat"><small>Screens</small><b>1</b></div>
+          <div class="gx-stat"><small>Build</small><b>2 days</b></div>
+        </div>
+      </section>
+      <section data-question="flow" data-choice="wizard">
+        <h3>B. Short wizard</h3>
+        <p class="how">Account, then team, then <b>a template to start from</b>.</p>
+        <div class="steps">
+          <div class="screen"><small>Account</small><i></i><i class="w6"></i><b></b></div>
+          <div class="screen"><small>Team</small><i class="w6"></i><i class="w4"></i><b></b></div>
+          <div class="screen"><small>Template</small><i></i><i class="w4"></i><b></b></div>
+        </div>
+        <div class="gx-stats">
+          <div class="gx-stat"><small>Screens</small><b>3</b></div>
+          <div class="gx-stat"><small>Build</small><b>1 week</b></div>
+        </div>
+      </section>
+      <section data-question="flow" data-choice="later">
+        <h3>C. Try first, sign up later</h3>
+        <p class="how">Use the app at once; <b>ask for an account on first save</b>.</p>
+        <div class="steps">
+          <div class="screen"><small>App</small><i></i><i></i><i class="w6"></i></div>
+          <div class="screen"><small>Save?</small><i class="w6"></i><b></b></div>
+        </div>
+        <div class="gx-stats">
+          <div class="gx-stat"><small>Screens</small><b>2</b></div>
+          <div class="gx-stat"><small>Build</small><b>2 weeks</b></div>
+        </div>
+      </section>
+    </div>
+  </gx-wide>
+
+  <gx-question name="flow" title="Which sign-up flow should I build?">
+    <p>One flow ships first; the others can follow. A is the smallest change with the biggest drop in steps.</p>
+    <gx-choice value="one" recommended>A. One screen<small>Fastest to build; no team setup until later.</small></gx-choice>
+    <gx-choice value="wizard">B. Short wizard<small>Teams set up on day one, at two more screens.</small></gx-choice>
+    <gx-choice value="later">C. Try first, sign up later<small>Lowest friction, but needs guest projects.</small></gx-choice>
+  </gx-question>
+
+  <gx-question name="extras" multiple title="Which extras go in the first version?">
+    <p>Pick any; the rest wait for the next round.</p>
+    <gx-choice value="google" recommended>Google sign-in</gx-choice>
+    <gx-choice value="magic">Magic link by email<small>No password to remember.</small></gx-choice>
+    <gx-choice value="invite">Invite teammates from the first screen</gx-choice>
+  </gx-question>
+
+  <gx-question name="name" type="text" title="What should the sample project be called?">
+    <p>It is the first thing a new user sees. Leave it blank for "My first project".</p>
+  </gx-question>
+</gx-questions>
+</body>
+</html>

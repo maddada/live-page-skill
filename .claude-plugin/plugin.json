@@ -1,0 +1,14 @@
+{
+  "name": "live-page",
+  "version": "0.1.0",
+  "description": "Live pages for any agent: show the user a mockup, report or comparison with questions in their browser, and get their answers back.",
+  "author": {
+    "name": "Mohamad Yahia (maddada)",
+    "url": "https://github.com/maddada"
+  },
+  "homepage": "https://github.com/maddada/live-page-skill",
+  "repository": "https://github.com/maddada/live-page-skill",
+  "license": "MIT",
+  "keywords": ["live-page", "visualize", "mockup", "questions", "answers", "html", "skills"],
+  "skills": ["./skills/live-page"]
+}

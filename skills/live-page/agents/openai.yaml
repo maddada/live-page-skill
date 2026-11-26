@@ -1,0 +1,3 @@
+interface:
+  display_name: "Live page"
+  short_description: "Show a page in the browser, get the user's answers back"

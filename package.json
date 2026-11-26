@@ -1,0 +1,19 @@
+{
+  "name": "live-page-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Live pages for any agent: one skill that shows the user a page in their browser and brings their answers back.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "check": "node scripts/check.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maddada/live-page-skill.git"
+  }
+}

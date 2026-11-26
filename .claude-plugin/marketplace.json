@@ -1,0 +1,17 @@
+{
+  "name": "live-page",
+  "owner": {
+    "name": "Mohamad Yahia (maddada)",
+    "url": "https://github.com/maddada"
+  },
+  "description": "Live pages: one skill that shows the user a page in their browser and brings their answers back to the agent.",
+  "plugins": [
+    {
+      "name": "live-page",
+      "source": "./",
+      "description": "Show the user a mockup, report or comparison with questions in their browser, and get their answers back.",
+      "category": "productivity",
+      "keywords": ["live-page", "visualize", "mockup", "questions"]
+    }
+  ]
+}

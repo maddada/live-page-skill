@@ -1,0 +1,22 @@
+{
+  "name": "live-page",
+  "interface": {
+    "displayName": "Live page"
+  },
+  "plugins": [
+    {
+      "name": "live-page",
+      "displayName": "Live page",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Show the user a mockup, report or comparison with questions in their browser, and get their answers back."
+    }
+  ]
+}
