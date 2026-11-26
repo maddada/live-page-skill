@@ -9,10 +9,19 @@
   "homepage": "https://github.com/maddada/live-page-skill",
   "repository": "https://github.com/maddada/live-page-skill",
   "license": "MIT",
-  "keywords": ["live-page", "visualize", "mockup", "questions", "answers"],
+  "keywords": [
+    "live-page",
+    "visualize",
+    "mockup",
+    "questions",
+    "answers"
+  ],
   "interface": {
     "displayName": "Live page",
-    "shortDescription": "Show a page in the browser, get the user's answers back."
+    "shortDescription": "Show a page in the browser, get the user's answers back.",
+    "brandColor": "#3b82f6",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png"
   },
   "skills": "./skills/"
 }
